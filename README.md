@@ -24,7 +24,7 @@ You have permission to use them as part of the game client intended to connect t
 
 ## Game Client
 
-The client source code is licensed under the GNU GPL 3.0.
+The client source code is licensed under the [GNU GPL 3.0](https://www.gnu.org/copyleft/gpl.html).
 
 If you contribute any code to this project, you must agree to have that code licensed under the GNU GPL 3.0 license, but you must also grant permission to me to use that code as I see fit, including (but not limited to) using that code as part of a closed source version of the client, using that code in other projects, selling without sharing source code, and so on.  You must allow me to do these things without any charge or limitation.  Contributing code to this project will be taken as an agreement to these terms.
 
