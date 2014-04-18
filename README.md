@@ -2,7 +2,7 @@
 
 King's Epic game client makes use of [Go QML](https://github.com/go-qml/qml), so please ensure you can run some of the examples from that package before attempting to compile this client.
 
-You will also need to [download the game art](http://kings-epic.com/art.zip).
+You will also need to [download the game art](http://kings-epic.com/downloads/art.zip).
 
 # Server
 
