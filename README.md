@@ -29,3 +29,7 @@ The client source code is licensed under the [GNU GPL 3.0](https://www.gnu.org/c
 If you contribute any code to this project, you must agree to have that code licensed under the GNU GPL 3.0 license, but you must also grant permission to me to use that code as I see fit, including (but not limited to) using that code as part of a closed source version of the client, using that code in other projects, selling without sharing source code, and so on.  You must allow me to do these things without any charge or limitation.  Contributing code to this project will be taken as an agreement to these terms.
 
 The primary purpose for this is so that I can produce a closed source version of the client should the need arise.  A secondary purpose is that it allows me to integrate that code into the server if required without releasing the source code.  I intend to include in the credits the name of anyone who contributes code to the project, should you wish to have your name included.
+
+## Go-QML
+
+This project makes use of [Go-QML](https://github.com/go-qml/qml).  See provided GO-QML-LICENSE file for the license for Go-QML.
