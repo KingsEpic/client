@@ -6,8 +6,15 @@ Item {
 
 	property string text
 	signal clicked()
+  property bool shadow: true
+
+  onShadowChanged: {
+    shadowRect.visible = shadow
+  }
+
 
   Rectangle {
+    id: shadowRect
     anchors.centerIn: parent
     width: parent.width + 6
     height: parent.height + 6
@@ -38,6 +45,14 @@ Item {
        height: parent.height
        onClicked: {
         epicButton.clicked()
+       }
+
+       onPressed: {
+        parent.scale = 0.9
+       }
+
+       onReleased: {
+        parent.scale = 1.0
        }
 	}
 }

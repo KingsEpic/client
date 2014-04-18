@@ -234,6 +234,7 @@ func (w *World) AddCraftableRequirement(cr *kinglib.CraftableRequirement) {
 			fmt.Printf("WARNING!  Could not find craft requrement: %+v\n", cr)
 		} else {
 			a.CraftRequirements[ra] = cr.Quantity
+			craft_model.UpdateArchetype(a)
 		}
 	} else {
 		fmt.Printf("WARNING!  Could not find archetype to add requirement: %+v\n", cr)
