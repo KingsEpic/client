@@ -7,6 +7,7 @@ import (
 	"gopkg.in/v0/qml"
 	"log"
 	"os"
+	// "runtime/pprof"
 	"time"
 )
 
@@ -62,6 +63,17 @@ func (g *Game) SetState(new_state int) {
 			w.Init()
 
 			connection.SendGob(&kinglib.Player{"player1"})
+			// f, err := os.Create("pprof")
+			// if err != nil {
+			// 	log.Fatal(err)
+			// }
+			// pprof.StartCPUProfile(f)
+
+			// go func() {
+			// 	time.Sleep(20 * time.Second)
+			// 	pprof.StopCPUProfile()
+			// 	fmt.Printf("Finished profiling")
+			// }()
 
 			// game.CSprite.CreateSprite(game.Map)
 		}
@@ -187,10 +199,10 @@ GLOOP:
 				w.SetPlayer(vs.EntityID)
 				new_x := int((win.Int("width") / 2) - 16 - game.Plx())
 				new_y := int((win.Int("height") / 2) - 16 - game.Ply())
-				fmt.Printf("Map new x, y: %d, %d\n", new_x, new_y)
+				// fmt.Printf("Map new x, y: %d, %d\n", new_x, new_y)
 				game.Map.Set("x", new_x)
 				game.Map.Set("y", new_y)
-				fmt.Printf("Vessel: %+v\n", vs)
+				// fmt.Printf("Vessel: %+v\n", vs)
 			case 4:
 				eu := &kinglib.EntityUpdate{}
 				connection.DecodeData(p.Data, eu)
@@ -209,12 +221,12 @@ GLOOP:
 				ti := &kinglib.TileInstantiation{}
 				connection.DecodeData(p.Data, ti)
 				w.InstantiateTile(ti)
-				fmt.Printf("Tile instantiation: %+v\n", ti)
+				// fmt.Printf("Tile instantiation: %+v\n", ti)
 			case 7:
 				ed := &kinglib.EntityDelete{}
 				connection.DecodeData(p.Data, ed)
 				w.EntityDelete(ed)
-				fmt.Printf("Delete entity: %+v\n", ed)
+				// fmt.Printf("Delete entity: %+v\n", ed)
 			case 8:
 				cr := &kinglib.CraftableRequirement{}
 				connection.DecodeData(p.Data, cr)
@@ -223,7 +235,7 @@ GLOOP:
 			case 9:
 				aa := &kinglib.AnimateAttack{}
 				connection.DecodeData(p.Data, aa)
-				fmt.Printf("Animate Attack: %+v\n", aa)
+				// fmt.Printf("Animate Attack: %+v\n", aa)
 			case 10:
 				at := &kinglib.Archetype{}
 				connection.DecodeData(p.Data, at)

@@ -243,7 +243,7 @@ func (w *World) AddCraftableRequirement(cr *kinglib.CraftableRequirement) {
 
 func (w *World) UpdateEntity(eu *kinglib.EntityUpdate) *Entity {
 	var e *Entity
-	update_inv_model := false
+	// update_inv_model := false
 
 	if w.Entities[eu.EntityID] == nil {
 		e = &Entity{
@@ -264,9 +264,24 @@ func (w *World) UpdateEntity(eu *kinglib.EntityUpdate) *Entity {
 	} else {
 		e = w.Entities[eu.EntityID]
 
-		// Check before we change container ID:
-		if e.ContainerID == w.Player {
-			update_inv_model = true
+		// Check for any changes significant to our inventory, and mark them to be updated.  Messy for now.
+		if e.ContainerID != w.Player && eu.ContainerID == w.Player {
+			defer func() {
+				inv_model.SlotUpdated(eu.ContainerIndex)
+			}()
+		} else if e.ContainerID == w.Player && e.ContainerIndex != eu.ContainerIndex {
+			defer func() {
+				inv_model.SlotUpdated(eu.ContainerIndex)
+				inv_model.SlotUpdated(e.ContainerIndex)
+			}()
+		} else if e.ContainerID == w.Player && e.Quantity != eu.Quantity {
+			defer func() {
+				inv_model.SlotUpdated(e.ContainerIndex)
+			}()
+		} else if e.ContainerID == w.Player && eu.ContainerID != w.Player {
+			defer func() {
+				inv_model.SlotUpdated(e.ContainerIndex)
+			}()
 		}
 	}
 
@@ -291,18 +306,7 @@ func (w *World) UpdateEntity(eu *kinglib.EntityUpdate) *Entity {
 	// e.ContainerIndex = eu.ContainerIndex
 	e.Quantity = eu.Quantity
 
-	// And check again after container ID changed:
-	if e.ContainerID == w.Player {
-		update_inv_model = true
-	}
-
-	if update_inv_model {
-		// fmt.Printf("Updating inv_model\n")
-		inv_model.SetContainer(w.Player)
-	}
-
 	return e
-
 }
 
 func (w *World) UpdateEntityChunk(e *Entity, cid ChunkIdentifier) {
@@ -329,6 +333,20 @@ func (w *World) entity_delete(e *Entity) {
 		if e.CurrentChunk != nil {
 			e.CurrentChunk.RemoveEntity(e)
 		}
+
+		// // Remove this entity from its container.  Really, I need to make a better inventory management like I have for server:
+		// if e.ContainerID != 0 {
+		// 	container := w.Entities[e.ContainerID]
+		// 	if container != nil {
+		// 		container.Inventory.Slots[e.ContainerIndex] = nil
+		// 	}
+
+		// 	if e.ContainerID == inv_model.Entity.EntityID {
+		// 		defer func() {
+		// 			inv_model.SlotUpdated(e.ContainerIndex)
+		// 		}()
+		// 	}
+		// }
 
 		delete(w.Entities, e.EntityID)
 	}
