@@ -8,6 +8,11 @@ You will also need to [download the game art](http://kings-epic.com/downloads/ar
 
 In order to play the game, you will need to connect to a running server.  You will be able to download an early version of the server from [King's Epic](http://kings-epic.com), or if you own the game you can use your copy of the latest server version.  At the moment, the game is not available for purchase.
 
+# Acknowledgements
+
+* Mark Saward -- programming and the worst art
+* Joshua Esselbrugge -- the better art
+
 # Licenses
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
